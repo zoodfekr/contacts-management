@@ -1,0 +1,92 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'vazirmatn/Vazirmatn-font-face.css';
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+
+body {
+  margin: 0;
+  font-family: Vazirmatn, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: #8EC5FC;
+        /* background-color: #8EC5FC;
+
+        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%); */
+
+background-color: #527585;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.rounded {
+  border-radius: 25px !important;
+  /* overflow: hidden; */
+}
+
+.rounded-5 {
+  border-radius: 5px !important;
+  border: #f505cd solid 0.5px;
+  font-size: small;
+}
+
+.card {
+  background-color: #e351e855;
+  flex-wrap: nowrap;
+
+}
+
+.card-img {
+  padding-right: 0px !important;
+}
+.notfound {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4990371148459384) 0%, rgba(232, 191, 241, 0.4514180672268907) 25%, rgba(225, 215, 227, 0.33657212885154064) 61%, rgba(164, 0, 200, 0.21612394957983194) 100%);
+}
+.hover-red:hover {
+  color: red;
+}
+/*======================
+    404 page
+=======================*/
+
+
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  font-family: 'Arvo', serif;
+}
+
+.page_404 img {
+  width: 100%;
+}
+
+.four_zero_four_bg {
+
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+}
+
+
+.four_zero_four_bg h1 {
+  font-size: 80px;
+}
+
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  color: #fff !important;
+  padding: 10px 20px;
+  background: #39ac31;
+  margin: 20px 0;
+  display: inline-block;
+}
+
+.contant_box_404 {
+  margin-top: -50px;
+}
