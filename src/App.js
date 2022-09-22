@@ -11,14 +11,18 @@ import Clist from './component/content/contact/Clist';
 import Error from './component/Error';
 import './App.css';
 import axios from 'axios';
-import {getallcontact,getallgroup} from './services/contactservices';
+import { createContact, getallcontact, getallgroup, getcontact, getgroup } from './services/contactservices';
 import Addcontact from './component/Addcontact';
+import { useNavigate } from 'react-router-dom';
 
 
 const App = () => {
+	const navigate = useNavigate();
 	const [preloader, setpreloader] = useState(false);
 	const [getcontacts, setcontacts] = useState([]);
-	const [getgroup, setgroup] = useState([]);
+	const [getGroups, setGroups] = useState([]);
+	let [groupname, setgroupname] = useState({});
+
 	//نوشته شود/////////////////////////////////
 	const [contact, setcontact] = useState({
 		fullname: "",
@@ -30,25 +34,40 @@ const App = () => {
 	})
 
 	useEffect(() => {
+
 		const fetchData = async () => {
 			try {
 				setpreloader(true);
+
 				let { data: contactdata } = await getallcontact();
 				let { data: groupsData } = await getallgroup();
 				setcontacts(contactdata);
-				setgroup(groupsData);
-				console.log("دریافت دیتا از سرور", contactdata);
+				setGroups(groupsData);
 				setpreloader(false);
 
 			} catch (err) {
-				console.log('مشکل دریافت دیتا');
 				setpreloader(false);
 			}
 		};
-
 		fetchData();
 
+
 	}, []);
+
+
+	//نوشته شود
+	const createContactForm = async (event) => {
+		event.preventDefault();
+		try {
+			const { status } = await createContact(contact);
+			if (status === 201) {
+				setcontact({});
+				navigate("/");
+			}
+		} catch (err) {
+			console.log(err.message);
+		}
+	}
 
 	// نوشته شود/////////////////////////////////////
 	const setcontactinfo = (event) => {
@@ -60,10 +79,14 @@ const App = () => {
 			<Routes>
 				<Route path='/' element={[<Navbar />]}>
 					<Route path='/' element={<Contacts />}></Route>
+					<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
 					<Route path='/about' element={<About />}></Route>
-					<Route path='/add' element={<Addcontact loading={preloader}
+					<Route path='/add' element={<Addcontact
+						loading={preloader}
 						setcontactinfo={setcontactinfo}
-						contact={getgroup}
+						contact={getcontact}
+						groups={getGroups}
+						createContactForm={createContactForm}
 					/>}></Route>
 
 					<Route path='/list' element={<List />} >
@@ -74,7 +97,7 @@ const App = () => {
 							</div>
 						} />
 
-						<Route path='/list/:cid' element={<Clist />} />
+						<Route path='/list/:cid' element={<Clist groupsData={getGroups} />} />
 
 					</Route>
 

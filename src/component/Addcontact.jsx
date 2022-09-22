@@ -4,14 +4,13 @@ import Spiner from './content/Preloader'
 // import { COMMENT, GREEN, PURPLE } from "../../helpers/colors";
 
 const Addcontact = ({
-	loading, contact, groups, setcontactinfo
+	loading, contact, groups, setcontactinfo, createContactForm
 }) => {
 	return (
 		<>
 			{loading ? (<Spiner />) : (
 
 				<>
-					{console.log("ok ok ")}
 
 					<section className="p-3 ">
 
@@ -40,7 +39,7 @@ const Addcontact = ({
 
 								<div className="col-md-4 ">
 
-									<form onSubmit={{}}>
+									<form onSubmit={createContactForm}>
 
 										<div className="mb-2">
 											<input name="fullname"
@@ -59,7 +58,7 @@ const Addcontact = ({
 												value={contact.photo}
 												onChange={setcontactinfo}
 												className="form-control"
-												required={true}
+												// required={true}
 												placeholder="آدرس تصویر"
 											/>
 										</div>
@@ -97,21 +96,23 @@ const Addcontact = ({
 											/>
 										</div>
 										<div className="mb-2">
-											{/* <select
+											<select
 												name="group"
-												// value={contact.group}
-												onChange={{}}
-												required={true}
+												value={contact.group}
+												onChange={setcontactinfo}
+												// required={true}
 												className="form-control"
 											>
-												<option value="">انتخاب گروه</option>
-												{groups.length > 0 &&
-													groups.map((group) => (
+												{/* <option value={0}>انتخاب گروه</option> */}
+
+												{groups.length > 0 && groups.map((group) => (
+
 														<option key={group.id} value={group.id}>
 															{group.name}
 														</option>
+
 													))}
-											</select> */}
+											</select>
 										</div>
 										<div className="mx-2">
 											<input
@@ -121,7 +122,7 @@ const Addcontact = ({
 												value="ساخت مخاطب"
 											/>
 											<Link
-												to={"/contacts"}
+												to={"/"}
 												className="btn mx-2"
 												style={{ backgroundColor: 'red' }}
 											>

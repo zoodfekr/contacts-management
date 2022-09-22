@@ -20,12 +20,10 @@ const Contacts = () => {
 				setcontacts(contactdata);
 				setgroup(groupsData);
 
-				console.log("دریافت دیتا از سرور", contactdata);
 
 				setpreloader(false);
 
 			} catch (err) {
-				console.log('مشکل دریافت دیتا');
 				setpreloader(false);
 			}
 		};

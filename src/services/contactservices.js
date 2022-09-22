@@ -13,6 +13,12 @@ export const getallgroup = () =>{
     return axios.get(url);
 }
 
+//get one group
+export const getgroup = (id) => {
+    const url = `${server_url}/groups/${id}`;
+    return axios.get(url);
+}
+
 //get contact
 export const getcontact =(contactid)=>{
     const url=`${server_url}/contacts/${contactid}`;
@@ -25,14 +31,14 @@ export const putcontact=(contactid,contact)=>{
     return axios.put(url,contact);
 }
 
-//add contact
-export const postcontact=(contact)=>{
-    const url=`${server_url}/contacts`;
-    return axios.post(url,contact);
-}
+//add contact *
+export const createContact = (contact) => {
+    const url = `${server_url}/contacts`;
+    return axios.post(url, contact);
+};
 
-//delete contacts
+//delete contacts *
 export const deletecontact = (contactid) =>{
-    const url=`${server_url}/contacts/contactid`;
+    const url = `${server_url}/contacts/${contactid}`;
     return axios.delete(url);
 }

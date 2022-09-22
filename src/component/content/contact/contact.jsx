@@ -1,5 +1,14 @@
+import { deletecontact } from "../../../services/contactservices";
+import { Link, useNavigate } from "react-router-dom";
+
 const Contact = ({ contacts }) => {
-	console.log(" درییافت دیتا در کارد ها", contacts);
+
+	const navigate = useNavigate();
+
+	const clear = () => {
+		deletecontact(parseInt(contacts.id));
+	}
+
 	return (
 		<div className="col-12 col-lg-6 ">
 			<div className="card my-2 ">
@@ -38,14 +47,15 @@ const Contact = ({ contacts }) => {
 						</div>
 
 						<div className="col-md-1 col-sm-1 d-flex flex-column align-items-center ">
-							<button className="btn my-1 btn btn-success" >
+
+							<Link to={`/${contacts.id}`} className=" btn my-1 btn btn-success" >
 								<i className="fa fa-eye" />
-							</button>
+							</Link>
 
 							<button className="btn my-1 btn btn-warning" >
 								<i className="fa fa-pen" />
 							</button>
-							<button className="btn my-1 btn btn-danger" >
+							<button className="btn my-1 btn btn-danger " onClick={clear}>
 								<i className="fa fa-trash" />
 							</button>
 						</div>

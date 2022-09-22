@@ -1,7 +1,7 @@
 
 import { NavLink, Outlet, useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getlist } from '../../data';
+
 import { getallcontact, getallgroup } from '../../services/contactservices';
 import Clist from './contact/Clist';
 import Addbtn from '../header/btns/Addbtn'
@@ -21,8 +21,6 @@ const List = () => {
 
 				setcontact(contactdata);
 				setgroup(groupsData);
-
-				console.log("دریافت دیتا از سرور", contactdata);
 
 			} catch (err) {
 				console.log('مشکل دریافت دیتا');
@@ -44,7 +42,6 @@ const List = () => {
 
 				setcontacts(data);
 
-				console.log(" دریافت دیتا از سرور مجازی", data);
 
 			} catch (err) {
 				console.log('مشکل دریافت دیتا');
@@ -119,7 +116,7 @@ const List = () => {
 			</div>
 
 			{/* نمایش دهنده اطلاعات */}
-			<div className='col-12 col-sm-8 border  border-success '>
+			<div className='col-12 col-sm-8  '>
 				<Outlet />
 			</div>
 
