@@ -3,6 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Contact = ({ contacts }) => {
 
+
+
+
+
+
+
+
+
 	const navigate = useNavigate();
 
 	const clear = () => {
@@ -52,9 +60,10 @@ const Contact = ({ contacts }) => {
 								<i className="fa fa-eye" />
 							</Link>
 
-							<button className="btn my-1 btn btn-warning" >
+							<Link to={`/editor/${contacts.id}`} className="btn my-1 btn btn-warning" >
 								<i className="fa fa-pen" />
-							</button>
+							</Link>
+
 							<button className="btn my-1 btn btn-danger " onClick={clear}>
 								<i className="fa fa-trash" />
 							</button>

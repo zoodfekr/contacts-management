@@ -7,61 +7,7 @@
       "email": "test@gmail.com",
       "job": "teacher",
       "group": "3",
-      "id": 1
-    },
-    {
-      "fullname": "مخاطب تست",
-      "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
-      "id": 2
-    },
-    {
-      "fullname": "مخاطب تست",
-      "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
       "id": 3
-    },
-    {
-      "fullname": "مخاطب تست",
-      "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
-      "id": 4
-    },
-    {
-      "fullname": "مخاطب تست",
-      "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
-      "id": 5
-    },
-    {
-      "fullname": "مخاطب تست",
-      "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
-      "id": 6
-    },
-    {
-      "fullname": "مخاطب تست",
-      "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
-      "id": 7
     },
     {
       "fullname": "مخاطب تست",
@@ -88,50 +34,29 @@
       "email": "test@gmail.com",
       "job": "teacher",
       "group": "3",
-      "id": 11
-    },
-    {
-      "fullname": "مخاطب تست",
-      "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
       "id": 12
     },
     {
-      "fullname": "مخاطب تست",
+      "fullname": [
+        "مهدی امینی"
+      ],
       "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
-      "id": 14
-    },
-    {
-      "fullname": "مخاطب تست",
-      "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
-      "id": 15
-    },
-    {
-      "fullname": "مخاطب تست",
-      "photo": "",
-      "mobile": "0930000000",
-      "email": "test@gmail.com",
-      "job": "teacher",
-      "group": "3",
-      "id": 16
+      "mobile": [
+        "09359600000"
+      ],
+      "email": [
+        "mehdi@gmail.com"
+      ],
+      "job": [
+        "خیاط"
+      ],
+      "group": [
+        "4"
+      ],
+      "id": 13
     }
   ],
   "groups": [
-    {
-      "id": "0",
-      "name": "بدون دسته بندی"
-    },
     {
       "id": "1",
       "name": "همکار"

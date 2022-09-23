@@ -14,6 +14,7 @@ import axios from 'axios';
 import { createContact, getallcontact, getallgroup, getcontact, getgroup } from './services/contactservices';
 import Addcontact from './component/Addcontact';
 import { useNavigate } from 'react-router-dom';
+import Editor from './component/Editor';
 
 
 const App = () => {
@@ -23,7 +24,7 @@ const App = () => {
 	const [getGroups, setGroups] = useState([]);
 	let [groupname, setgroupname] = useState({});
 
-	//نوشته شود/////////////////////////////////
+
 	const [contact, setcontact] = useState({
 		fullname: "",
 		photo: "",
@@ -50,12 +51,9 @@ const App = () => {
 			}
 		};
 		fetchData();
-
-
 	}, []);
 
 
-	//نوشته شود
 	const createContactForm = async (event) => {
 		event.preventDefault();
 		try {
@@ -68,8 +66,6 @@ const App = () => {
 			console.log(err.message);
 		}
 	}
-
-	// نوشته شود/////////////////////////////////////
 	const setcontactinfo = (event) => {
 		setcontact({ ...contact, [event.target.name]: [event.target.value] });
 	}
@@ -81,8 +77,16 @@ const App = () => {
 					<Route path='/' element={<Contacts />}></Route>
 					<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
 					<Route path='/about' element={<About />}></Route>
-					<Route path='/add' element={<Addcontact
+
+					<Route path='/editor/:cid' element={<Editor
 						loading={preloader}
+						setcontactinfo={setcontactinfo}
+						contact={getcontact}
+						groups={getGroups}
+						createContactForm={createContactForm}
+					/>}></Route>
+
+					<Route path='/add' element={<Addcontact
 						setcontactinfo={setcontactinfo}
 						contact={getcontact}
 						groups={getGroups}

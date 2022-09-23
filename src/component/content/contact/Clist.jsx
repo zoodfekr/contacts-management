@@ -22,7 +22,7 @@ const Clist = (props) => {
 
 	const clear = () => {
 		deletecontact(parseInt(contact.id));
-		navigate("/")
+		navigate("/list")
 	}
 
 
