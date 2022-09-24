@@ -3,14 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Contact = ({ contacts }) => {
 
-
-
-
-
-
-
-
-
 	const navigate = useNavigate();
 
 	const clear = () => {
@@ -31,11 +23,11 @@ const Contact = ({ contacts }) => {
 
 						<div className="col-md-7 col-sm-4   py-0 px-0 ">
 
-							<ul className="list-group px-1">
-								<li className="list-group-item list-group-item-dark">
+							<ul className="list-group px-1 ">
+								{/* <li className="list-group-item list-group-item-dark">
 									مخاطب شماره:{"  "}
 									<span className="fw-bold">{contacts.id}</span>
-								</li>
+								</li> */}
 								<li className="list-group-item list-group-item-dark">
 									نام و نام خانوداگی :{"  "}
 									<span className="fw-bold">{contacts.fullname}</span>

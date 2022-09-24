@@ -27,7 +27,7 @@ export const getcontact =(contactid)=>{
 
 //update contact
 export const putcontact=(contactid,contact)=>{
-    const url=`${server_url}/contacts/:${contactid}`;
+    const url = `${server_url}/contacts/${contactid}`;
     return axios.put(url,contact);
 }
 

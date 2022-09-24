@@ -67,7 +67,7 @@ const Addcontact = ({
 										<div className="mb-2">
 											<input
 												name="mobile"
-												type="number"
+												type="tel"
 												value={contact.mobile}
 												onChange={setcontactinfo}
 												className="form-control"
@@ -87,6 +87,7 @@ const Addcontact = ({
 											/>
 										</div>
 										<div className="mb-2">
+
 											<input
 												type="text"
 												name="job"
@@ -106,7 +107,7 @@ const Addcontact = ({
 												className="form-control"
 
 											>
-												{/* <option selected key={1} value={1} >انتخاب گروه</option> */}
+												<option selected key={1} value="" >انتخاب گروه</option>
 
 												{groups.length > 0 && groups.map((group) => (
 

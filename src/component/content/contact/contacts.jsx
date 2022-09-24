@@ -1,7 +1,6 @@
 import Contact from './contact';
 import Spiner from '../Preloader';
-import { getallcontact } from '../../../data';
-import { getallgroup } from '../../../services/contactservices';
+import { getallcontact, getallgroup } from '../../../services/contactservices';
 import { useEffect, useState } from 'react';
 
 const Contacts = () => {
@@ -39,7 +38,7 @@ const Contacts = () => {
 		(
 			<div className=' text-center py-2  rounded'>
 				<img src={require('../../../assets/no-found.gif')} alt="notfound" className='w-50' />
-				<p className='text-danger' style={{ fontSize: '25px' }}>مخاطب یافت نشد...</p>
+				<p className='' style={{ fontSize: '25px' }}>مخاطب یافت نشد...</p>
 			</div>
 		);
 

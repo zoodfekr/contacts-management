@@ -1,17 +1,17 @@
 
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Spiner from './content/Preloader';
-import { getallgroup, getcontact } from "../services/contactservices";
+import { getallgroup, getcontact, putcontact } from "../services/contactservices";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const Editor = ({ groups, createContactForm }) => {
+const Editor = ({ groups }) => {
 
 	const params = useParams(); //params.cid > 10
+	const navigate = useNavigate();
 
-	const [contact, setecontact] = useState();
 	const [egroup, setegroup] = useState();
-	const [Econtact, setEcontact] = useState({
+	const [contact, setcontact] = useState({
 		fullname: "",
 		photo: "",
 		mobile: "",
@@ -25,7 +25,7 @@ const Editor = ({ groups, createContactForm }) => {
 			try {
 				let { data: cdata } = await getcontact(parseInt(params.cid)) //10
 				let { data: gdata } = await getallgroup();
-				setecontact(cdata);
+				setcontact(cdata);
 				setegroup(gdata);
 
 			} catch {
@@ -37,7 +37,13 @@ const Editor = ({ groups, createContactForm }) => {
 	}, []);
 
 	const setcontactinfo = (event) => {
-		setEcontact({ ...Econtact, [event.target.name]: [event.target.value] });
+		setcontact({ ...contact, [event.target.name]: event.target.value });
+	}
+
+	const updateform = (event) => {
+		event.preventDefault();
+		putcontact(parseInt(params.cid), contact);
+		navigate("/")
 	}
 
 	if (contact) {
@@ -75,13 +81,17 @@ const Editor = ({ groups, createContactForm }) => {
 							</div>
 
 
+
 							<hr style={{ backgroundColor: "green" }} className='border' />
 
-							<div className="row mt-5  p-3" style={{ backgroundColor: "#670691", borderRadius: "25px" }}>
+							<div className="row mt-5  p-3" style={{
+								backgroundColor: "purple", borderRadius: "25px",
+								opacity: "0.7"
+							}}>
 
 								<div className="col-md-4 ">
 
-									<form onSubmit={createContactForm}>
+									<form onSubmit={updateform}>
 
 										<div className="mb-2">
 											<input
@@ -164,10 +174,10 @@ const Editor = ({ groups, createContactForm }) => {
 
 											<input type="submit"
 												className="btn"
-												// style={{ backgroundColor: 'purple' }}
-												value="ساخت مخاطب"
+												value="ویرایش مخاطب"
 												className="btn btn-primary"
 											/>
+
 											<Link to={"/"}
 												className="btn mx-2"
 												className="btn btn-danger"

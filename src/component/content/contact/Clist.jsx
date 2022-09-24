@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { clearc } from '../../../data';
+
 import { getcontact, getallgroup, getgroup, deletecontact } from "../../../services/contactservices";
 import Contacts from "./contacts";
 
@@ -16,7 +16,8 @@ const Clist = (props) => {
 	const [group, setgroup] = useState(null);
 
 	useEffect(() => {
-		getcontact(params.cid).then(r => setcontact(r.data)).catch(e => alert('خطا'));
+
+		getcontact(params.cid).then(r => setcontact(r.data));
 
 	}, [params]);
 
@@ -45,7 +46,7 @@ const Clist = (props) => {
 
 			<div className="container">
 				<div className="p-5 m-2  Sticky-top border" style={style} >
-				<p>  مخاطب شماره {params.cid}</p>
+					<p> آیدی مخاطب: {params.cid}  </p>
 				<p>نام: {contact.fullname}</p>
 				<p>موبایل: {contact.mobile}</p>
 				<p>شغل: {contact.job}</p>

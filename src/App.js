@@ -67,8 +67,10 @@ const App = () => {
 		}
 	}
 	const setcontactinfo = (event) => {
-		setcontact({ ...contact, [event.target.name]: [event.target.value] });
+		setcontact({ ...contact, [event.target.name]: event.target.value });
 	}
+
+
 
 	return (
 		<>
@@ -106,7 +108,7 @@ const App = () => {
 					</Route>
 
 				</Route>
-				<Route path='*' element={<Error />} />
+				<Route path='/*' element={<Error />} />
 			</Routes>
 		</>
 	)
