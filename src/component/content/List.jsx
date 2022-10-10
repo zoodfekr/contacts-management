@@ -13,23 +13,24 @@ const List = () => {
 	const [contact, setcontact] = useState([]);
 	const [group, setgroup] = useState([]);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				let { data: contactdata } = await getallcontact();
-				let { data: groupsData } = await getallgroup();
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 		try {
+	// 			let { data: contactdata } = await getallcontact();
+	// 			let { data: groupsData } = await getallgroup();
 
-				setcontact(contactdata);
-				setgroup(groupsData);
+	// 			setcontact(contactdata);
+	// 			setgroup(groupsData);
 
-			} catch (err) {
-				console.log('مشکل دریافت دیتا');
-			}
-		};
-		fetchData();
-	}, []);
+	// 		} catch (err) {
+	// 			console.log('مشکل دریافت دیتا');
+	// 		}
+	// 	};
+	// 	fetchData();
+	// }, []);
 
 	// const list = getlist();
+
 
 	const [getcontacts, setcontacts] = useState([]);
 	const list = getcontacts;
@@ -39,16 +40,15 @@ const List = () => {
 		const fetchData = async () => {
 			try {
 				let { data } = await getallcontact();
-
 				setcontacts(data);
 
-
 			} catch (err) {
+
 				console.log('مشکل دریافت دیتا');
 			}
 		};
 		fetchData();
-	}, []);
+	}, [location]);
 
 
 

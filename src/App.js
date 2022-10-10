@@ -35,7 +35,6 @@ const App = () => {
 	})
 
 	useEffect(() => {
-
 		const fetchData = async () => {
 			try {
 				setpreloader(true);
@@ -72,11 +71,15 @@ const App = () => {
 
 
 
+
+
+
 	return (
 		<>
 			<Routes>
 				<Route path='/' element={[<Navbar />]}>
-					<Route path='/' element={<Contacts />}></Route>
+					<Route path='/' element={<Contacts
+					/>}></Route>
 					<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
 					<Route path='/about' element={<About />}></Route>
 

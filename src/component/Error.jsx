@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Error = () => {
+
+	const navigate = useNavigate()
 	return (
 		<section className="page_404">
 			<div className="container">
@@ -23,6 +26,7 @@ const Error = () => {
 				</div>
 			</div>
 		</section>
+
 	)
 };
 

@@ -13,18 +13,38 @@ const Clist = (props) => {
 	const navigate = useNavigate();
 
 	const [contact, setcontact] = useState(null);
-	const [group, setgroup] = useState(null);
+
 
 	useEffect(() => {
+		// getcontact(params.cid).then(() => setcontact(data));
 
-		getcontact(params.cid).then(r => setcontact(r.data));
+		const fetchData = async () => {
+			try {
+				let { data: contactdata } = await getcontact(params.cid);
+				setcontact(contactdata);
+			} catch (err) {
+				console.log(err.message)
+			}
+		};
+
+		fetchData();
 
 	}, [params]);
 
-	const clear = () => {
-		deletecontact(parseInt(contact.id));
-		navigate("/list")
+
+	const clear = async () => {
+		try {
+			const box = await deletecontact(parseInt(params.cid));
+			if (box.status == 200) {
+				// let { data: contactdata } = await getcontact(params.cid);
+				// setcontact(contactdata);
+				navigate("/list");
+			}
+		} catch (err) {
+			console.log(err.message);
+		}
 	}
+
 
 
 

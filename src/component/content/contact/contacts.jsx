@@ -1,6 +1,6 @@
 import Contact from './contact';
 import Spiner from '../Preloader';
-import { getallcontact, getallgroup } from '../../../services/contactservices';
+import { getallcontact, getallgroup, deletecontact } from '../../../services/contactservices';
 import { useEffect, useState } from 'react';
 
 const Contacts = () => {
@@ -11,17 +11,12 @@ const Contacts = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-
 				setpreloader(true);
 				let { data: contactdata } = await getallcontact();
-				let { data: groupsData } = await getallgroup ();
-
+				let { data: groupsData } = await getallgroup();
 				setcontacts(contactdata);
 				setgroup(groupsData);
-
-
 				setpreloader(false);
-
 			} catch (err) {
 				setpreloader(false);
 			}
@@ -31,8 +26,23 @@ const Contacts = () => {
 
 	}, []);
 
+	const clear = async () => {
+		try {
+			setpreloader(true);
+			const box = await deletecontact(parseInt(contacts[0].id));
+			if (box.status == 200) {
+				let { data: contactdata } = await getallcontact();
+				setcontacts(contactdata);
+				setpreloader(false);
+			}
+		} catch (err) {
+			console.log(err.message);
+		}
+	}
+
+
 	const conts = contacts.length > 0 ? contacts.map((c) => (
-		< Contact key={c.id} contacts={c} />
+		< Contact key={c.id} contacts={c} clear={clear} />
 	)) :
 
 		(

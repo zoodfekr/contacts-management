@@ -1,13 +1,9 @@
-import { deletecontact } from "../../../services/contactservices";
+import { deletecontact, getallcontact, getallgroup } from "../../../services/contactservices";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const Contact = ({ contacts }) => {
+const Contact = ({ contacts, clear }) => {
 
-	const navigate = useNavigate();
-
-	const clear = () => {
-		deletecontact(parseInt(contacts.id));
-	}
 
 	return (
 		<div className="col-12 col-lg-6 ">
@@ -67,6 +63,8 @@ const Contact = ({ contacts }) => {
 			</div>
 
 	)
+
+
 }
 
 export default Contact;
