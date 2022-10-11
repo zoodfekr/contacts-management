@@ -15,6 +15,7 @@ import { createContact, getallcontact, getallgroup, getcontact, getgroup } from 
 import Addcontact from './component/Addcontact';
 import { useNavigate } from 'react-router-dom';
 import Editor from './component/Editor';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 
 const App = () => {

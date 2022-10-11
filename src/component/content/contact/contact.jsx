@@ -52,7 +52,7 @@ const Contact = ({ contacts, clear }) => {
 								<i className="fa fa-pen" />
 							</Link>
 
-							<button className="btn my-1 btn btn-danger " onClick={clear}>
+							<button className="btn my-1 btn btn-danger " onClick={() => clear(contacts)}>
 								<i className="fa fa-trash" />
 							</button>
 						</div>
