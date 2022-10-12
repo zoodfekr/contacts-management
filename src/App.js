@@ -16,6 +16,8 @@ import Addcontact from './component/Addcontact';
 import { useNavigate } from 'react-router-dom';
 import Editor from './component/Editor';
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App = () => {
@@ -39,7 +41,6 @@ const App = () => {
 		const fetchData = async () => {
 			try {
 				setpreloader(true);
-
 				let { data: contactdata } = await getallcontact();
 				let { data: groupsData } = await getallgroup();
 				setcontacts(contactdata);
@@ -59,8 +60,11 @@ const App = () => {
 		try {
 			const { status } = await createContact(contact);
 			if (status === 201) {
+				toast.success("مخاطب ساخته شد")
 				setcontact({});
 				navigate("/");
+			} else {
+				toast.err("مخاطب ساخته نشد")
 			}
 		} catch (err) {
 			console.log(err.message);
@@ -70,17 +74,14 @@ const App = () => {
 		setcontact({ ...contact, [event.target.name]: event.target.value });
 	}
 
-
-
-
-
-
 	return (
 		<>
 			<Routes>
+
 				<Route path='/' element={[<Navbar />]}>
-					<Route path='/' element={<Contacts
-					/>}></Route>
+					<Route path='/' element={<Contacts />}>
+
+					</Route>
 					<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
 					<Route path='/about' element={<About />}></Route>
 

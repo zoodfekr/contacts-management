@@ -4,6 +4,7 @@ import Spiner from './content/Preloader';
 import { getallgroup, getcontact, putcontact } from "../services/contactservices";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { toast } from 'react-toastify';
 
 const Editor = ({ groups }) => {
 
@@ -43,6 +44,7 @@ const Editor = ({ groups }) => {
 	const updateform = (event) => {
 		event.preventDefault();
 		putcontact(parseInt(params.cid), contact);
+		toast.success("مخاطب ویرایش شد")
 		navigate("/")
 	}
 

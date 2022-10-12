@@ -1,6 +1,7 @@
 // import { clear } from "@testing-library/user-event/dist/clear";
 import { useEffect } from "react";
 import { useState } from "react";
+import { toast } from 'react-toastify';
 import { useParams, useNavigate } from "react-router-dom";
 
 import { getcontact, getallgroup, getgroup, deletecontact } from "../../../services/contactservices";
@@ -31,14 +32,15 @@ const Clist = (props) => {
 
 	}, [params]);
 
-
 	const clear = async () => {
 		try {
 			const box = await deletecontact(parseInt(params.cid));
 			if (box.status == 200) {
-				// let { data: contactdata } = await getcontact(params.cid);
-				// setcontact(contactdata);
+				toast.success("مخاطب حذف شد")
 				navigate("/list");
+			} else {
+				toast.error("مشکلی پیش آمده")
+
 			}
 		} catch (err) {
 			console.log(err.message);

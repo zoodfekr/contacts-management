@@ -3,6 +3,10 @@ import Spiner from '../Preloader';
 import { getallcontact, getallgroup, deletecontact } from '../../../services/contactservices';
 import { useEffect, useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const Contacts = () => {
 	const [preloader, setpreloader] = useState(false);
@@ -24,28 +28,10 @@ const Contacts = () => {
 		};
 
 		fetchData();
-
 	}, []);
 
 
 	const clear = (event) => {
-		// confirmAlert({
-		// 	title: ` حذف ${event.fullname}`,
-		// 	message: 'آیا مطمعن هستید؟',
-		// 	buttons: [
-		// 		{
-		// 			label: 'بله',
-		// 			onClick: () => {
-		// 				remover();
-		// 			}
-		// 		},
-		// 		{
-		// 			label: 'خیر',
-		// 			onClick: () => true
-		// 		}
-		// 	]
-		// });
-
 
 		confirmAlert({
 			customUI: ({ onClose }) => {
@@ -62,9 +48,7 @@ const Contacts = () => {
 							<button
 								className='btn btn-danger mx-1'
 								onClick={() => {
-									// this.handleClickDelete();
-									remover();
-									onClose();
+									remover(); onClose();
 								}}
 							>
 								بله
@@ -78,22 +62,23 @@ const Contacts = () => {
 
 	};
 
-
-
 	const remover = async () => {
 		try {
 			setpreloader(true);
 			const box = await deletecontact(parseInt(contacts[0].id));
 			if (box.status == 200) {
+				toast.success("مخاطب حذف شد")
 				let { data: contactdata } = await getallcontact();
 				setcontacts(contactdata);
 				setpreloader(false);
+			} else {
+				toast.err("مشکلی پیش آمده")
 			}
-
 		} catch (err) {
 			console.log(err.message);
 		}
 	}
+
 
 
 	const conts = contacts.length > 0 ? contacts.map((c) => (
@@ -115,8 +100,6 @@ const Contacts = () => {
 			{preloader ? <Spiner /> : (conts)}
 
 		</div>
-
-
 
 	)
 }
