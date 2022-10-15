@@ -6,10 +6,10 @@ const Contact = ({ contacts, clear }) => {
 
 
 	return (
-		<div className="col-12 col-lg-6 ">
-			<div className="card my-2 ">
-				<div className="card-body  px-2">
-					<div className="  align-items-center d-flex justify-content-around px-2">
+		<div className="col-12 col-lg-6  ">
+			<div className="card my-2 " style={{ borderRadius: "50px", overflow: "hidden" }}>
+				<div className="card-body  px-2 ">
+					<div className="  align-items-center d-flex justify-content-around px-2" >
 
 						<div className="col-3 col-sm-4 ">
 							{contacts.photo ?

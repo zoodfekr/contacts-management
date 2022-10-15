@@ -12,26 +12,6 @@ const List = () => {
 	let location = useLocation();
 	const [contact, setcontact] = useState([]);
 	const [group, setgroup] = useState([]);
-
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		try {
-	// 			let { data: contactdata } = await getallcontact();
-	// 			let { data: groupsData } = await getallgroup();
-
-	// 			setcontact(contactdata);
-	// 			setgroup(groupsData);
-
-	// 		} catch (err) {
-	// 			console.log('مشکل دریافت دیتا');
-	// 		}
-	// 	};
-	// 	fetchData();
-	// }, []);
-
-	// const list = getlist();
-
-
 	const [getcontacts, setcontacts] = useState([]);
 	const list = getcontacts;
 
@@ -49,7 +29,6 @@ const List = () => {
 		};
 		fetchData();
 	}, [location]);
-
 
 
 	const listFilter = data => {

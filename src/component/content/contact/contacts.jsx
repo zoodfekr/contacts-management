@@ -8,10 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const Contacts = () => {
+const Contacts = ({ getFilteredContacts }) => {
+
 	const [preloader, setpreloader] = useState(false);
 	const [getgroup, setgroup] = useState([]);
 	const [contacts, setcontacts] = useState([]);
+	const [query, setquery] = useState([]);
+
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -31,8 +34,10 @@ const Contacts = () => {
 	}, []);
 
 
-	const clear = (event) => {
 
+
+	//toast
+	const clear = (event) => {
 		confirmAlert({
 			customUI: ({ onClose }) => {
 				return (
@@ -82,7 +87,9 @@ const Contacts = () => {
 
 
 	const conts = contacts.length > 0 ? contacts.map((c) => (
+
 		< Contact key={c.id} contacts={c} clear={clear} />
+
 	)) :
 
 		(
@@ -95,7 +102,7 @@ const Contacts = () => {
 
 	return (
 
-		<div className="container p-0 d-flex flex-row flex-wrap justify-content-evenly  border-success" dir="rtl" style={{ boxSizing: "border-box" }}>
+		<div className=" container p-0 d-flex flex-row flex-wrap justify-content-center" dir="rtl" style={{ boxSizing: "border-box" }}>
 
 			{preloader ? <Spiner /> : (conts)}
 

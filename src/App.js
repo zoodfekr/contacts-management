@@ -21,11 +21,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const App = () => {
+
 	const navigate = useNavigate();
 	const [preloader, setpreloader] = useState(false);
 	const [getcontacts, setcontacts] = useState([]);
 	const [getGroups, setGroups] = useState([]);
 	let [groupname, setgroupname] = useState({});
+
+	const [query, setquery] = useState({ text: "" });
+	const [getFilteredContacts, setFilteredContacts] = useState();
 
 
 	const [contact, setcontact] = useState({
@@ -36,6 +40,18 @@ const App = () => {
 		job: "",
 		group: ""
 	})
+
+
+
+	const finder = (event) => {
+
+		setquery({ ...query, text: event.target.value });
+
+		const allcontacts = getcontacts.filter((contact) => {
+			return contact.fullname.toLowerCase().include(event.target.value.toLowerCase())
+		})
+		setFilteredContacts(allcontacts);
+	}
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -78,28 +94,12 @@ const App = () => {
 		<>
 			<Routes>
 
-				<Route path='/' element={[<Navbar />]}>
-					<Route path='/' element={<Contacts />}>
-
-					</Route>
+				<Route path='/' element={[<Navbar finder={finder} query={query} />]}>
+					<Route path='/' element={<Contacts getFilteredContacts={getFilteredContacts} />}></Route>
 					<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
 					<Route path='/about' element={<About />}></Route>
-
-					<Route path='/editor/:cid' element={<Editor
-						loading={preloader}
-						setcontactinfo={setcontactinfo}
-						contact={getcontact}
-						groups={getGroups}
-						createContactForm={createContactForm}
-					/>}></Route>
-
-					<Route path='/add' element={<Addcontact
-						setcontactinfo={setcontactinfo}
-						contact={getcontact}
-						groups={getGroups}
-						createContactForm={createContactForm}
-					/>}></Route>
-
+					<Route path='/editor/:cid' element={<Editor loading={preloader} setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>
+					<Route path='/add' element={<Addcontact setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>
 					<Route path='/list' element={<List />} >
 
 						<Route index element={
@@ -116,6 +116,9 @@ const App = () => {
 				<Route path='/*' element={<Error />} />
 			</Routes>
 		</>
+
+
+
 	)
 }
 
