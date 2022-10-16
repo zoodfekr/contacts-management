@@ -3,7 +3,6 @@ const Addbtn = () => {
 
 	const style = {
 		minWidth: "180px",
-
 	}
 
 	return (
