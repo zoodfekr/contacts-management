@@ -11,7 +11,7 @@ const Contact = ({ contacts, clear }) => {
 				<div className="card-body  px-2 ">
 					<div className="  align-items-center d-flex justify-content-around px-2" >
 
-						<div className="col-3 col-sm-4 ">
+						<div className="col-3 col-sm-4 border d-flex" style={{ maxHeight: "140px", overflow: "hidden", alignItems: "center", borderRadius: "25px" }}>
 							{contacts.photo ?
 								<img src={contacts.photo} alt={contacts.fullname} className="img-fluid rounded" /> :
 								<img src={require('../../../assets/male.jpg')} alt={contacts.fullname} className="img-fluid rounded" />}
