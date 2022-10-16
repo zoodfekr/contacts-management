@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const Contacts = ({ getFilteredContacts }) => {
+const Contacts = (props) => {
 
 	const [preloader, setpreloader] = useState(false);
 	const [getgroup, setgroup] = useState([]);
@@ -53,7 +53,7 @@ const Contacts = ({ getFilteredContacts }) => {
 							<button
 								className='btn btn-danger mx-1'
 								onClick={() => {
-									remover(); onClose();
+									remover(event); onClose();
 								}}
 							>
 								بله
@@ -67,14 +67,15 @@ const Contacts = ({ getFilteredContacts }) => {
 
 	};
 
-	const remover = async () => {
+	const remover = async (event) => {
 		try {
 			setpreloader(true);
-			const box = await deletecontact(parseInt(contacts[0].id));
+			const box = await deletecontact(parseInt(event.id));
 			if (box.status == 200) {
 				toast.success("مخاطب حذف شد")
 				let { data: contactdata } = await getallcontact();
 				setcontacts(contactdata);
+
 				setpreloader(false);
 			} else {
 				toast.err("مشکلی پیش آمده")
@@ -82,28 +83,50 @@ const Contacts = ({ getFilteredContacts }) => {
 		} catch (err) {
 			console.log(err.message);
 		}
+
+	}
+
+
+	const search = (event) => {
+
+		// const allcontacts = getcontacts.filter((contact) => {
+		// 	return contact.fullname.toLowerCase().include(event.target.value.toLowerCase())
+		// })
+		// setFilteredContacts(allcontacts);
+		console.log(query);
 	}
 
 
 
-	const conts = contacts.length > 0 ? contacts.map((c) => (
 
-		< Contact key={c.id} contacts={c} clear={clear} />
 
-	)) :
+	const notfound = <div className=' text-center py-2  rounded'>
+		<img src={require('../../../assets/no-found.gif')} alt="notfound" className='w-50' />
+		<p className='' style={{ fontSize: '25px' }}>مخاطب یافت نشد...</p>
+	</div>;
 
-		(
-			<div className=' text-center py-2  rounded'>
-				<img src={require('../../../assets/no-found.gif')} alt="notfound" className='w-50' />
-				<p className='' style={{ fontSize: '25px' }}>مخاطب یافت نشد...</p>
-			</div>
-		);
+
+	const input = (g) => {
+
+		let input = props.query.text;
+
+		if (input) {
+			return g.fullname.toLowerCase().includes(input);
+		} else {
+			return true;
+		}
+	}
+
+
+
+	const showcontact = (c) => <Contact key={c.id} contacts={c} clear={clear} />;
+
+
+	const conts = contacts.length > 0 ? contacts.filter(input).map(showcontact) : notfound;
 
 
 	return (
-
 		<div className=" container p-0 d-flex flex-row flex-wrap justify-content-center" dir="rtl" style={{ boxSizing: "border-box" }}>
-
 			{preloader ? <Spiner /> : (conts)}
 
 		</div>

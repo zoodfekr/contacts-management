@@ -18,10 +18,7 @@ function Navbar({ query, finder }) {
 				{/* <button onClick={props.finder}>eeeee</button> */}
 				<div class="container">
 					<Logo />
-					{location.pathname == "/" ? <Search
-						query={query}
-						finder={finder}
-					/> : null}
+					{location.pathname == "/" ? <Search query={query} finder={finder} /> : null}
 			</div >
 
 		</nav >

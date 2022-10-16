@@ -3,14 +3,6 @@ import { useSearchParams, useLocation, useParams } from 'react-router-dom';
 import test, { tester } from "../../content/contact/contacts"
 
 const Search = ({ query, finder }) => {
-
-	let location = useLocation();
-	const params = useParams();
-
-	let [SearchParams, setSearchParams] = useSearchParams();
-
-
-
 	return (
 		<form class="d-flex p-1 col-12 col-lg-4 text-center " role="search" dir="ltr" style={{ display: 'hidden' }}>
 			<div className="input-group">

@@ -29,6 +29,7 @@ const App = () => {
 	let [groupname, setgroupname] = useState({});
 
 	const [query, setquery] = useState({ text: "" });
+
 	const [getFilteredContacts, setFilteredContacts] = useState();
 
 
@@ -43,14 +44,25 @@ const App = () => {
 
 
 
-	const finder = (event) => {
 
+
+
+	// const finder = (event) => {
+
+	// 	setquery({ ...query, text: event.target.value });
+
+	// 	const allcontacts = getcontacts.filter((contact) => {
+	// 		return contact.fullname.toLowerCase().include(event.target.value.toLowerCase())
+	// 	})
+	// 	setFilteredContacts(allcontacts);
+	// }
+
+
+
+	const finder = (event) => {
+		console.log(event.target.value);
 		setquery({ ...query, text: event.target.value });
 
-		const allcontacts = getcontacts.filter((contact) => {
-			return contact.fullname.toLowerCase().include(event.target.value.toLowerCase())
-		})
-		setFilteredContacts(allcontacts);
 	}
 
 	useEffect(() => {
@@ -95,7 +107,11 @@ const App = () => {
 			<Routes>
 
 				<Route path='/' element={[<Navbar finder={finder} query={query} />]}>
-					<Route path='/' element={<Contacts getFilteredContacts={getFilteredContacts} />}></Route>
+					<Route path='/' element={<Contacts
+						getFilteredContacts={getFilteredContacts}
+						query={query}
+
+					/>}></Route>
 					<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
 					<Route path='/about' element={<About />}></Route>
 					<Route path='/editor/:cid' element={<Editor loading={preloader} setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>

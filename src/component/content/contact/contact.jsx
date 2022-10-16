@@ -14,7 +14,7 @@ const Contact = ({ contacts, clear }) => {
 						<div className="col-3 col-sm-4 ">
 							{contacts.photo ?
 								<img src={contacts.photo} alt={contacts.fullname} className="img-fluid rounded" /> :
-								<img src="https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg" alt={contacts.fullname} className="img-fluid rounded" />}
+								<img src={require('../../../assets/male.jpg')} alt={contacts.fullname} className="img-fluid rounded" />}
 						</div>
 
 						<div className="col-md-7 col-sm-4   py-0 px-0 ">
