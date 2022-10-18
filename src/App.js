@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Navbar from './component/header/navbar/Navbar';
-import Contacts from './component/content/contact/contacts';
-import Addbtn from './component/header/btns/Addbtn';
+import Navbar from './component/Navbar';
+import Contacts from './component/contacts';
+import Addbtn from './component/Addbtn';
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import About from './component/content/About';
-import List from './component/content/List';
-import Clist from './component/content/contact/Clist';
+import About from './component/About';
+import List from './component/List';
+import Clist from './component/Clist';
 import Error from './component/Error';
 import './App.css';
 import axios from 'axios';
@@ -18,6 +18,8 @@ import Editor from './component/Editor';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import Appcontext from '../src/context/Appcontext'
 
 
 const App = () => {
@@ -42,21 +44,7 @@ const App = () => {
 		group: ""
 	})
 
-
-
-
-
-
-	// const finder = (event) => {
-
-	// 	setquery({ ...query, text: event.target.value });
-
-	// 	const allcontacts = getcontacts.filter((contact) => {
-	// 		return contact.fullname.toLowerCase().include(event.target.value.toLowerCase())
-	// 	})
-	// 	setFilteredContacts(allcontacts);
-	// }
-
+	const tester = "ramin";
 
 
 	const finder = (event) => {
@@ -104,33 +92,40 @@ const App = () => {
 
 	return (
 		<>
-			<Routes>
 
-				<Route path='/' element={[<Navbar finder={finder} query={query} />]}>
-					<Route path='/' element={<Contacts
-						getFilteredContacts={getFilteredContacts}
-						query={query}
+			<Appcontext.Provider value={tester}>
 
-					/>}></Route>
-					<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
-					<Route path='/about' element={<About />}></Route>
-					<Route path='/editor/:cid' element={<Editor loading={preloader} setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>
-					<Route path='/add' element={<Addcontact setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>
-					<Route path='/list' element={<List />} >
 
-						<Route index element={
-							< div className='container justify-content-center d-flex Sticky-top'>
-								<img src={require('./assets/clist.jpg')} alt="" className='w-75' style={{ opacity: '0.5', }} />
-							</div>
-						} />
+				<Routes>
 
-						<Route path='/list/:cid' element={<Clist groupsData={getGroups} />} />
+					<Route path='/' element={[<Navbar finder={finder} query={query} />]}>
+						<Route path='/' element={<Contacts
+							getFilteredContacts={getFilteredContacts}
+							query={query}
+
+						/>}></Route>
+						<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
+						<Route path='/about' element={<About />}></Route>
+						<Route path='/editor/:cid' element={<Editor loading={preloader} setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>
+						<Route path='/add' element={<Addcontact setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>
+						<Route path='/list' element={<List />} >
+
+							<Route index element={
+								< div className='container justify-content-center d-flex Sticky-top'>
+									<img src={require('./assets/clist.jpg')} alt="" className='w-75' style={{ opacity: '0.5', }} />
+								</div>
+							} />
+
+							<Route path='/list/:cid' element={<Clist groupsData={getGroups} />} />
+
+						</Route>
 
 					</Route>
+					<Route path='/*' element={<Error />} />
+				</Routes>
 
-				</Route>
-				<Route path='/*' element={<Error />} />
-			</Routes>
+			</Appcontext.Provider>
+
 		</>
 
 

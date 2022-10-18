@@ -1,6 +1,6 @@
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import Spiner from './content/Preloader';
+import Spiner from './Preloader';
 import { getallgroup, getcontact, putcontact } from "../services/contactservices";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";

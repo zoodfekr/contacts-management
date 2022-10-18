@@ -1,4 +1,4 @@
-import { red } from '../../../helpers/colors'
+import { red } from '../helpers/colors'
 const Logo = () => {
 	return (
 		<a class="navbar-brand col-12 col-lg-4 text-center" href="#">

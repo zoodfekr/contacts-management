@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import Spiner from './content/Preloader'
+import Spiner from './Preloader'
 // import { COMMENT, GREEN, PURPLE } from "../../helpers/colors";
 
 const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactForm }) => {

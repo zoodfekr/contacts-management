@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from 'react-toastify';
 import { useParams, useNavigate } from "react-router-dom";
 
-import { getcontact, getallgroup, getgroup, deletecontact } from "../../../services/contactservices";
+import { getcontact, getallgroup, getgroup, deletecontact } from "../services/contactservices";
 import Contacts from "./contacts";
 
 
@@ -69,15 +69,15 @@ const Clist = (props) => {
 			<div className="container">
 				<div className="p-5 m-2  Sticky-top border" style={style} >
 					<p> آیدی مخاطب: {params.cid}  </p>
-				<p>نام: {contact.fullname}</p>
-				<p>موبایل: {contact.mobile}</p>
-				<p>شغل: {contact.job}</p>
+					<p>نام: {contact.fullname}</p>
+					<p>موبایل: {contact.mobile}</p>
+					<p>شغل: {contact.job}</p>
 					<p>ایمیل: {contact.email}</p>
 					<p>گروه: {first[0].name}</p>
 
 					<button className="btn btn-danger" onClick={clear} >حذف مخاطب</button>
 
-			</div >
+				</div >
 			</div>
 		)
 	} else {

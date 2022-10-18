@@ -1,11 +1,11 @@
 
 import Logo from "./Logo";
 import { link, Outlet, outlet, useLocation } from 'react-router-dom';
-import Addbtn from "../btns/Addbtn";
+import Addbtn from "./Addbtn";
 import { ToastContainer, toast } from 'react-toastify';
 import Search from "./search";
 import { Location } from "react-router-dom";
-import Contacts from "../../content/contact/contacts";
+import Contacts from "./contacts";
 
 function Navbar({ query, finder }) {
 
@@ -17,11 +17,13 @@ function Navbar({ query, finder }) {
 			<nav class="navbar navbar-dark navbar-expand-lg bg-light bg-dark shadow-lg" dir="rtl" >
 				{/* <button onClick={props.finder}>eeeee</button> */}
 				<div class="container">
+
 					<Logo />
 					{location.pathname == "/" ? <Search query={query} finder={finder} /> : null}
-			</div >
 
-		</nav >
+				</div >
+
+			</nav >
 			<Addbtn />
 			<Outlet />
 			{/* <Contacts /> */}

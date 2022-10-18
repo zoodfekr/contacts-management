@@ -1,6 +1,6 @@
 import Contact from './contact';
-import Spiner from '../Preloader';
-import { getallcontact, getallgroup, deletecontact } from '../../../services/contactservices';
+import Spiner from './Preloader';
+import { getallcontact, getallgroup, deletecontact } from '../services/contactservices';
 import { useEffect, useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import { ToastContainer, toast } from 'react-toastify';
@@ -101,7 +101,7 @@ const Contacts = (props) => {
 
 
 	const notfound = <div className=' text-center py-2  rounded'>
-		<img src={require('../../../assets/no-found.gif')} alt="notfound" className='w-50' />
+		<img src={require('../assets/no-found.gif')} alt="notfound" className='w-50' />
 		<p className='' style={{ fontSize: '25px' }}>مخاطب یافت نشد...</p>
 	</div>;
 

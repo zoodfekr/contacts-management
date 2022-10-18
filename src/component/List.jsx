@@ -2,9 +2,9 @@
 import { NavLink, Outlet, useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import { getallcontact, getallgroup } from '../../services/contactservices';
-import Clist from './contact/Clist';
-import Addbtn from '../header/btns/Addbtn'
+import { getallcontact, getallgroup } from '../services/contactservices';
+import Clist from './Clist';
+import Addbtn from './Addbtn'
 
 const List = () => {
 
@@ -68,7 +68,7 @@ const List = () => {
 						backgroundColor: isActive ? "green" : "",
 						boxShadow: isActive ? "0px 0px 15px 5px green" : "",
 					};
-				} }>
+				}}>
 				{`${data.fullname}`}
 			</NavLink>
 		);
