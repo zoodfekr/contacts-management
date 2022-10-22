@@ -44,7 +44,9 @@ const App = () => {
 		group: ""
 	})
 
-	const tester = "ramin";
+	const tester = getcontacts;
+	const tester2 = "0";
+
 
 
 	const finder = (event) => {
@@ -75,6 +77,7 @@ const App = () => {
 		event.preventDefault();
 		try {
 			const { status } = await createContact(contact);
+
 			if (status === 201) {
 				toast.success("مخاطب ساخته شد")
 				setcontact({});
@@ -93,7 +96,7 @@ const App = () => {
 	return (
 		<>
 
-			<Appcontext.Provider value={tester}>
+			<Appcontext.Provider value={{ tester, tester2 }}>
 
 
 				<Routes>

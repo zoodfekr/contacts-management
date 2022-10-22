@@ -1,14 +1,18 @@
 import Contact from './contact';
 import Spiner from './Preloader';
 import { getallcontact, getallgroup, deletecontact } from '../services/contactservices';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Appcontext from '../context/Appcontext';
 
 
 
 const Contacts = (props) => {
+
+
+	const user = React.useContext(Appcontext)
 
 	const [preloader, setpreloader] = useState(false);
 	const [getgroup, setgroup] = useState([]);
@@ -32,8 +36,6 @@ const Contacts = (props) => {
 
 		fetchData();
 	}, []);
-
-
 
 
 	//toast

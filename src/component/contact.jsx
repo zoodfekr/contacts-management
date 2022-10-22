@@ -8,7 +8,9 @@ const Contact = ({ contacts, clear }) => {
 
 	const user = React.useContext(Appcontext)
 
-	console.log("hi", user);
+
+
+
 
 
 	return (

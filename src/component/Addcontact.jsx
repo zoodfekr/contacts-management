@@ -1,10 +1,22 @@
 
 import { Link } from "react-router-dom";
-import Spiner from './Preloader'
+import Spiner from './Preloader';
+import { useEffect, useRef } from "react";
 // import { COMMENT, GREEN, PURPLE } from "../../helpers/colors";
 
 const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactForm }) => {
 
+
+	const firstinput = useRef();
+
+	useEffect(() => {
+		const fetchData = () => {
+			firstinput.current.focus();
+			firstinput.current.className = " form-control"
+			console.log(firstinput);
+		};
+		fetchData();
+	}, []);
 
 
 	return (
@@ -14,7 +26,7 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 				<>
 
 					<section className="p-3 ">
-
+						f
 						<img src={require("../assets/man-taking-note.png")} height="400px" style={{
 							position: "absolute",
 							zIndex: "-1",
@@ -43,7 +55,9 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 									<form onSubmit={createContactForm}>
 
 										<div className="mb-2">
-											<input name="fullname"
+											<input
+												ref={firstinput}
+												name="fullname"
 												type="text" onChange={setcontactinfo}
 												className='form-control'
 												placeholder="نام و نام خانوادگی"
