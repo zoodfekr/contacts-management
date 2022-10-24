@@ -18,8 +18,8 @@ import Editor from './component/Editor';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import Appcontext from '../src/context/Appcontext'
+import Accordion from './component/Accordion';
 
 
 const App = () => {
@@ -89,6 +89,7 @@ const App = () => {
 			console.log(err.message);
 		}
 	}
+
 	const setcontactinfo = (event) => {
 		setcontact({ ...contact, [event.target.name]: event.target.value });
 	}
@@ -102,6 +103,9 @@ const App = () => {
 				<Routes>
 
 					<Route path='/' element={[<Navbar finder={finder} query={query} />]}>
+
+						<Route path='/acc' element={<Accordion />} />
+
 						<Route path='/' element={<Contacts
 							getFilteredContacts={getFilteredContacts}
 							query={query}

@@ -49,15 +49,15 @@ const Contact = ({ contacts, clear }) => {
 
 						<div className="col-md-1 col-sm-1 d-flex flex-column align-items-center ">
 
-							<Link to={`/${contacts.id}`} className=" btn my-1 btn btn-success" >
+							<Link to={`/${contacts.id}`} className=" btn my-1 btn btn-success" title="نمایش مخاطب">
 								<i className="fa fa-eye" />
 							</Link>
 
-							<Link to={`/editor/${contacts.id}`} className="btn my-1 btn btn-warning" >
+							<Link to={`/editor/${contacts.id}`} className="btn my-1 btn btn-warning" title="ویرایش مخاطب">
 								<i className="fa fa-pen" />
 							</Link>
 
-							<button className="btn my-1 btn btn-danger " onClick={() => clear(contacts)}>
+							<button className="btn my-1 btn btn-danger " onClick={() => clear(contacts)} title="حذف مخاطب" >
 								<i className="fa fa-trash" />
 							</button>
 						</div>
