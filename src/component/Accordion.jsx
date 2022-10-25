@@ -41,9 +41,12 @@ const Accordion = () => {
 					<button className="btn btn-warning" onClick={() => setcolorChange((prevLoading) => !prevLoading)} >تغییر رنگ زمینه</button>
 				</div>
 
-				<div className="d-flex justify-content-center my-2 align-items-center p-1 flex-column" style={paragraphStyle}>
-					{starter}
-				</div>
+				{number ?
+					<div className="d-flex justify-content-center my-2 align-items-center p-1 flex-column"
+						style={paragraphStyle}>
+						{starter}
+					</div>
+					: null}
 
 			</div>
 		</div>
