@@ -1,56 +1,42 @@
-import { useMemo } from "react";
 import { useEffect, useState } from "react";
-import List from "./List";
 
 const Accordion = () => {
 
-	const [colorChange, setcolorChange] = useState(true);
-	const [number, setnumber] = useState();
+	const [input, setinput] = useState();
+	let data = [];
 
 	useEffect(() => {
-		console.log("useEffect called", number);
-		getitems();
-	}, [number]);
+		if (input) { Show() };
+	}, [input]);
 
-	const getitems = () => {
-		console.log("getitems");
-		const data = [number, parseInt(number) + 2, parseInt(number) + 3];
 
-		if (number) {
-			return data.map(x => <p>{x}{x.index}</p>);
-		} else {
-			return null
+	let Show = () => {
+		console.log("show()")
+		let count = 0;
+
+		while (count < 1000) {
+			data.push(input)
+			console.log(data);
+			count++;
 		}
-	};
 
-	const starter = useMemo(() => (getitems()), [number])
+		return data.map((x) =>
+			<div className="container border border-danger m-1 d-flex align-content-center">
+				<p className="text-light  d-flex d-flex align-content-center p-0">عدد وارد شده برابر است با: {x}</p>
+			</div>)
+	}
 
-	const paragraphStyle = { backgroundColor: "lightblue", color: "black", fontWeight: "bold", }
-	const bgcolor = { backgroundColor: (colorChange ? "#7F8C8D" : "#196F3D ") };
 
 	return (
+		<div className="container">
+			<input type="number" className="form-control" onChange={(e) => setinput(e.target.value)} />
 
-		<div className="container  py-5" style={bgcolor}>
-			<div className="container col-12 col-md-6 d-flex flex-column justify-content-center">
-
-				<input type="number" className="form-control my-2"
-					value={number}
-					onChange={e => setnumber(e.target.value)} />
-
-				<div className=" d-flex justify-content-center my-2">
-					<button className="btn btn-warning" onClick={() => setcolorChange((prevLoading) => !prevLoading)} >تغییر رنگ زمینه</button>
-				</div>
-
-				{number ?
-					<div className="d-flex justify-content-center my-2 align-items-center p-1 flex-column"
-						style={paragraphStyle}>
-						{starter}
-					</div>
-					: null}
+			<div className="container border d-flex justify-content-center py-1 my-1 flex-column">
+				{input ? Show() : <h5>درحال انتظار.....</h5>}
 
 			</div>
-		</div>
 
+		</div>
 	)
 };
 export default Accordion;
