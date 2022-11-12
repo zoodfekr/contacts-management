@@ -1,45 +1,46 @@
-import { useMemo } from "react";
-import { useTransition } from "react";
-import { useEffect, useState } from "react";
-import Spiner from "./Preloader";
+import { useEffect } from "react";
+import { useState } from "react";
+
+const useFetch = (url) => {
+	let [data, setData] = useState(null);
+	useEffect(() => {
+		fetch(url).then((res) => res.json()).then((data) => setData(data));
+	}, [url]);
+	return [data];
+};
 
 const Accordion = () => {
-	let [input, setinput] = useState();
-	let [list, setlist] = useState();
+	let [status, setstatus] = useState(false);
 
-	let [ispending, startTransition] = useTransition();
-
-
-	const handleChange = (e) => {
-
-		setinput(e.target.value);
-		let data = [];
-		let count = 0;
-
-		startTransition(() => {
-			while (count < 1000) {
-				data.push(e.target.value);
-				count++;
-			}
-			setlist(data);
-			console.log("data set()");
-		})
-	}
-
-	const listmap = list.map((x) =>
-		<div className="container border border-danger m-1 d-flex align-content-center">
-			<p className="text-light  d-flex d-flex align-content-center p-0">عدد وارد شده برابر است با: {x}</p>
-		</div>);
-
-	const loading = <div className="container  d-flex justify-content-center"><Spiner></Spiner></div>;
+	let [data] = useFetch('https://jsonplaceholder.ir/users');
 
 	return (
-		<div className="container">
-			<input type="number" className="form-control" onChange={handleChange} />
-			<div className="container  d-flex justify-content-center py-1 my-1 flex-column">
-				{input ? (ispending ? loading : listmap) : null}
+		<div className="container border d-flex flex-column justify-content-center">
+			<h3 className="align-self-center p-2" style={{ fontFamily: "Vazirmatn" }}>نمایش اطلاعات مسافرین</h3>
+			<div className="d-flex justify-content-center">
+				<button className="btn btn-primary m-2" onClick={() => setstatus(prevloading => !prevloading)}>نمایش</button>
 			</div>
+
+			{status ? data.map((user, index) => (
+				<div key={index} className="border m-1 bg-light d-flex">
+					<ol >
+						{/* <li><img src={user.avatar} alt="آواتار" /></li> */}
+						<li >{`نام و نشان : ${user.name} `}</li>
+						<li>{`username: ${user.username} `}</li>
+						<li>{`ایمیل: ${user.email} `}</li>
+						<li>{`شماره موبایل: ${user.phone} `}</li>
+						<li><a href={user.website}>{`وب سایت: ${user.website}`}</a></li>
+						<li>{`شرکت: ${user.company} `}</li>
+						<li>{`ادرس: ${user.address.country}- ${user.address.city}-${user.address.street}-${user.address.alley} `}</li>
+
+					</ol>
+				</div>
+			)) : null}
+
 		</div>
 	)
+
 };
 export default Accordion;
+
+
