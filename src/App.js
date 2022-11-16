@@ -30,7 +30,7 @@ const App = () => {
 	const [getGroups, setGroups] = useState([]);
 	let [groupname, setgroupname] = useState({});
 
-	const [query, setquery] = useState({ text: "" });
+	let [query, setquery] = useState({ text: "" });
 
 	const [getFilteredContacts, setFilteredContacts] = useState();
 
@@ -49,11 +49,13 @@ const App = () => {
 
 
 
-	const finder = (event) => {
-		console.log(event.target.value);
-		setquery({ ...query, text: event.target.value });
+	let timer;
 
+	const finder = (event) => {
+		clearTimeout(timer);
+		timer = setTimeout(() => { setquery({ ...query, text: event.target.value }) }, 1000)
 	}
+
 
 	useEffect(() => {
 		const fetchData = async () => {

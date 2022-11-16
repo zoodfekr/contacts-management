@@ -11,9 +11,7 @@ import Appcontext from '../context/Appcontext';
 
 const Contacts = (props) => {
 
-
 	const user = React.useContext(Appcontext)
-
 	const [preloader, setpreloader] = useState(false);
 	const [getgroup, setgroup] = useState([]);
 	const [contacts, setcontacts] = useState([]);
@@ -77,7 +75,6 @@ const Contacts = (props) => {
 				toast.success("مخاطب حذف شد")
 				let { data: contactdata } = await getallcontact();
 				setcontacts(contactdata);
-
 				setpreloader(false);
 			} else {
 				toast.err("مشکلی پیش آمده")
@@ -85,21 +82,7 @@ const Contacts = (props) => {
 		} catch (err) {
 			console.log(err.message);
 		}
-
 	}
-
-
-	const search = (event) => {
-
-		// const allcontacts = getcontacts.filter((contact) => {
-		// 	return contact.fullname.toLowerCase().include(event.target.value.toLowerCase())
-		// })
-		// setFilteredContacts(allcontacts);
-		console.log(query);
-	}
-
-
-
 
 
 	const notfound = <div className=' text-center py-2  rounded'>
@@ -108,18 +91,16 @@ const Contacts = (props) => {
 	</div>;
 
 
+
+
 	const input = (g) => {
-
 		let input = props.query.text;
-
 		if (input) {
 			return g.fullname.toLowerCase().includes(input);
 		} else {
 			return true;
 		}
 	}
-
-
 
 	const showcontact = (c) => <Contact key={c.id} contacts={c} clear={clear} />;
 

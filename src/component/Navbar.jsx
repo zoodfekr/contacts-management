@@ -15,28 +15,27 @@ function Navbar({ query, finder }) {
 	return (
 		<>
 			<nav class="navbar navbar-dark navbar-expand-lg bg-light bg-dark shadow-lg" dir="rtl" >
-				{/* <button onClick={props.finder}>eeeee</button> */}
 				<div class="container">
 
 					<Logo />
+
 					{location.pathname == "/" ? <Search query={query} finder={finder} /> : null}
 
 				</div >
 
 			</nav >
+
+
+
 			<Addbtn />
 			<Outlet />
-			{/* <Contacts /> */}
-			<ToastContainer
-				position="bottom-center"
-				autoClose={1500}
+			<ToastContainer position="bottom-center" autoClose={1500}
 				hideProgressBar={false}
 				newestOnTop={false}
 				closeOnClick
 				rtl={true}
 				pauseOnHover
-				theme="colored"
-			/>
+				theme="colored" />
 
 		</>
 

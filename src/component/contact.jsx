@@ -8,11 +8,6 @@ const Contact = ({ contacts, clear }) => {
 
 	const user = React.useContext(Appcontext)
 
-
-
-
-
-
 	return (
 		<div className="col-12 col-lg-6   px-2">
 			<div className="card my-2 " style={{ borderRadius: "50px", overflow: "hidden" }}>
