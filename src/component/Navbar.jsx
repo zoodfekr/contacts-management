@@ -6,11 +6,22 @@ import { ToastContainer, toast } from 'react-toastify';
 import Search from "./search";
 import { Location } from "react-router-dom";
 import Contacts from "./contacts";
+import React, { useEffect } from "react";
+import Appcontext from "../context/Appcontext";
+
 
 function Navbar({ query, finder }) {
 
 	const location = useLocation();
 
+	// const { seterror } = React.useContext(Appcontext);
+
+	// پاک کننده ارورهای yup
+	// useEffect(() => {
+	// 	if (location.pathname != "/list") {
+	// 		seterror([]);
+	// 	}
+	// }, [location]);
 
 	return (
 		<>

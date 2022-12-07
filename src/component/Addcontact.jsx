@@ -1,22 +1,27 @@
 
 import { Link } from "react-router-dom";
 import Spiner from './Preloader';
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 // import { COMMENT, GREEN, PURPLE } from "../../helpers/colors";
+import Appcontext from "../context/Appcontext";
+import { useFormik, Form, Field, Formik, ErrorMessage } from 'formik';
+import { contactSchema } from "../validation/validation";
 
 const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactForm }) => {
 
+	// const { error } = React.useContext(Appcontext);
 
-	const firstinput = useRef();
+	// const firstinput = useRef();
 
-	useEffect(() => {
-		const fetchData = () => {
-			firstinput.current.focus();
-			firstinput.current.className = " form-control"
-			console.log(firstinput);
-		};
-		fetchData();
-	}, []);
+	// useEffect(() => {
+	// 	const fetchData = () => {
+	// 		firstinput.current.focus();
+	// 		firstinput.current.className = " form-control"
+	// 		console.log(firstinput);
+	// 	};
+	// 	fetchData();
+	// }, []);
+
 
 
 	return (
@@ -26,7 +31,7 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 				<>
 
 					<section className="p-3 ">
-						f
+
 						<img src={require("../assets/man-taking-note.png")} height="400px" style={{
 							position: "absolute",
 							zIndex: "-1",
@@ -38,6 +43,7 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 
 						<div className="container ">
 
+							{/* تیتر ساخت مخاطب جدید */}
 							<div className="row ">
 								<div className="col">
 									<p className="h4 fw-bold text-center " style={{ color: "black" }}>
@@ -48,115 +54,119 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 
 							<hr style={{ backgroundColor: "green" }} className='border' />
 
+							{/* فرم */}
 							<div className="row mt-5 ">
-
 								<div className="col-md-4 ">
 
-									<form onSubmit={createContactForm}>
+									<Formik initialValues={{ fullname: "", photo: "", mobile: "", email: "", job: "", group: "" }}
+										validationSchema={contactSchema} onSubmit={(values) => { setcontactinfo(values) }}
+									>
+										<Form className="bg-light p-4" style={{ borderRadius: "25px" }}>
 
-										<div className="mb-2">
-											<input
-												ref={firstinput}
-												name="fullname"
-												type="text" onChange={setcontactinfo}
-												className='form-control'
-												placeholder="نام و نام خانوادگی"
-												required={true}
-												value={contact.fullname}
-											/>
-										</div>
+											<div className="mb-2">
 
-										<div className="mb-2">
-											<input
-												name="photo"
-												type="text"
-												value={contact.photo}
-												onChange={setcontactinfo}
-												className="form-control"
-												// required={true}
-												placeholder="آدرس تصویر"
-											/>
-										</div>
-										<div className="mb-2">
-											<input
-												name="mobile"
-												type="tel"
-												value={contact.mobile}
-												onChange={setcontactinfo}
-												className="form-control"
-												required={true}
-												placeholder="شماره موبایل"
-											/>
-										</div>
-										<div className="mb-2">
-											<input
-												type="email"
-												name="email"
-												value={contact.email}
-												onChange={setcontactinfo}
-												className="form-control"
-												required={true}
-												placeholder="آدرس ایمیل"
-											/>
-										</div>
-										<div className="mb-2">
+												<Field name="fullname"
+													type="text"
+													className='form-control'
+													placeholder="نام و نام خانوادگی"
+												/>
 
-											<input
-												type="text"
-												name="job"
-												value={contact.job}
-												onChange={setcontactinfo}
-												className="form-control"
-												required={true}
-												placeholder="شغل"
-											/>
-										</div>
-										<div className="mb-2">
-											<select
-												name="group"
-												value={contact.group}
-												onChange={setcontactinfo}
-												required={true}
-												className="form-control"
+												<ErrorMessage name="fullname"
+													render={(msg) => (<div className="text-danger">{msg}</div>)} />
 
-											>
-												<option selected key={1} value="" >انتخاب گروه</option>
+											</div>
 
-												{groups.length > 0 && groups.map((group) => (
+											<div className="mb-2">
+												<Field
+													name="photo"
+													type="text"
+													className="form-control"
+													placeholder="آدرس تصویر"
+												/>
+												<ErrorMessage name="photo" render={(msg) => (<div className="text-danger">{msg}</div>)} />
 
-													<option key={group.id} value={group.id}> {group.name} </option>
+											</div>
 
+											<div className="mb-2">
+												<Field
+													name="mobile"
+													type="number"
+													className="form-control"
+													placeholder="شماره موبایل"
+												/>
+												<ErrorMessage name="mobile" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+
+											</div>
+											<div className="mb-2">
+												<Field
+													type="email"
+													name="email"
+													className="form-control"
+													placeholder="آدرس ایمیل"
+												/>
+												<ErrorMessage name="email" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+
+											</div>
+											<div className="mb-2">
+
+												<Field
+													type="text"
+													name="job"
+													className="form-control"
+													placeholder="شغل"
+												/>
+												<ErrorMessage name="job" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+
+											</div>
+											<div className="mb-2">
+												<Field
+													name="group"
+													as="select"
+													className="form-control"
+												>
+													<option selected key={1} value="" >انتخاب گروه</option>
+													{groups.length > 0 && groups.map((group) => (
+														<option key={group.id} value={group.id}> {group.name} </option>
 													))}
-											</select>
-										</div>
-										<div className="mx-2" className=" d-flex " style={{
-											justifyContent: "space-around"
-										}}>
 
-											<input type="submit"
-												className="btn"
-												// style={{ backgroundColor: 'purple' }}
-												value="ساخت مخاطب"
-												className="btn btn-primary"
-											/>
-											<Link to={"/"}
-												className="btn mx-2"
-												className="btn btn-danger"
-											>
-												انصراف
-											</Link>
+												</Field>
+												<ErrorMessage name="group" render={(msg) => (<div className="text-danger">{msg}</div>)} />
 
-										</div>
-									</form>
+											</div>
+
+											<div className="mx-2" className=" d-flex " style={{
+												justifyContent: "space-around"
+											}}>
+
+												<input type="submit"
+													className="btn"
+
+													value="ساخت مخاطب"
+													className="btn btn-primary"
+												/>
+												<Link to={"/"}
+													className="btn mx-2"
+													className="btn btn-danger"
+												>
+													انصراف
+												</Link>
+
+											</div>
+										</Form>
+
+
+									</Formik>
+
 								</div>
 							</div>
+
 						</div>
 
 
 					</section>
 				</>
 
-	)
+			)
 			}
 		</>
 	);

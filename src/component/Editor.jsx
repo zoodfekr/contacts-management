@@ -5,6 +5,9 @@ import { getallgroup, getcontact, putcontact } from "../services/contactservices
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
+import { useFormik, Form, Field, Formik, ErrorMessage } from 'formik';
+import { contactSchema } from "../validation/validation";
+
 
 const Editor = ({ groups }) => {
 
@@ -12,14 +15,7 @@ const Editor = ({ groups }) => {
 	const navigate = useNavigate();
 
 	const [egroup, setegroup] = useState();
-	const [contact, setcontact] = useState({
-		fullname: "",
-		photo: "",
-		mobile: "",
-		email: "",
-		job: "",
-		group: ""
-	})
+	const [contact, setcontact] = useState()
 
 	useEffect(() => {
 		const recever = async () => {
@@ -41,9 +37,9 @@ const Editor = ({ groups }) => {
 		setcontact({ ...contact, [event.target.name]: event.target.value });
 	}
 
-	const updateform = (event) => {
-		event.preventDefault();
-		putcontact(parseInt(params.cid), contact);
+	const updateform = (value) => {
+		// event.preventDefault();
+		putcontact(parseInt(params.cid), value);
 		toast.success("مخاطب ویرایش شد")
 		navigate("/")
 	}
@@ -56,8 +52,6 @@ const Editor = ({ groups }) => {
 
 
 		return (
-			<>
-				(
 
 				<>
 
@@ -82,104 +76,98 @@ const Editor = ({ groups }) => {
 								</div>
 							</div>
 
-
-
 							<hr style={{ backgroundColor: "green" }} className='border' />
 
 							<div className="row mt-5  p-3" style={{
 								backgroundColor: "purple", borderRadius: "25px",
 								opacity: "0.7"
-							}}>
-
+						}}>
 								<div className="col-md-4 ">
 
-									<form onSubmit={updateform}>
+
+								<Formik
+
+									initialValues={contact}
+									validationSchema={contactSchema}
+									onSubmit={(values) => { updateform(values) }}
+								>
+									<Form className="bg-light p-4" style={{ borderRadius: "25px" }}>
 
 										<div className="mb-2">
-											<input
-												name="fullname"
-												type="text"
-												className="form-control"
-												value={contact.fullname}
-												onChange={setcontactinfo}
-												required={true}
-												placeholder="نام و نام خانوادگی"
-											/>
+
+											<Field name="fullname" type="text" className='form-control' placeholder="نام و نام خانوادگی" />
+											<ErrorMessage name="fullname" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+
 										</div>
 
-
 										<div className="mb-2">
-											<input
+											<Field
 												name="photo"
 												type="text"
-												value={contact.photo}
-												onChange={setcontactinfo}
 												className="form-control"
-												// required={true}
 												placeholder="آدرس تصویر"
 											/>
+											<ErrorMessage name="photo" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+
 										</div>
+
 										<div className="mb-2">
-											<input
+											<Field
 												name="mobile"
 												type="number"
-												value={contact.mobile}
-												onChange={setcontactinfo}
 												className="form-control"
-												required={true}
 												placeholder="شماره موبایل"
 											/>
+											<ErrorMessage name="mobile" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+
 										</div>
 										<div className="mb-2">
-											<input
+											<Field
 												type="email"
 												name="email"
-												value={contact.email}
-												onChange={setcontactinfo}
 												className="form-control"
-												required={true}
 												placeholder="آدرس ایمیل"
 											/>
+											<ErrorMessage name="email" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+
 										</div>
 										<div className="mb-2">
-											<input
+
+											<Field
 												type="text"
 												name="job"
-												value={contact.job}
-												onChange={setcontactinfo}
 												className="form-control"
-												required={true}
 												placeholder="شغل"
 											/>
+											<ErrorMessage name="job" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+
 										</div>
 										<div className="mb-2">
-											<select
+											<Field
 												name="group"
-												value={contact.group}
-												onChange={setcontactinfo}
-												required={true}
+												as="select"
 												className="form-control"
-
 											>
-												{/* <option selected key={1} value={1} >انتخاب گروه</option> */}
-
+												<option selected key={1} value="" >انتخاب گروه</option>
 												{groups.length > 0 && groups.map((group) => (
-
 													<option key={group.id} value={group.id}> {group.name} </option>
-
 												))}
-											</select>
+
+											</Field>
+											<ErrorMessage name="group" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+
 										</div>
+
 										<div className="mx-2" className=" d-flex " style={{
 											justifyContent: "space-around"
 										}}>
 
 											<input type="submit"
 												className="btn"
+
 												value="ویرایش مخاطب"
 												className="btn btn-primary"
 											/>
-
 											<Link to={"/"}
 												className="btn mx-2"
 												className="btn btn-danger"
@@ -188,7 +176,14 @@ const Editor = ({ groups }) => {
 											</Link>
 
 										</div>
-									</form>
+									</Form>
+
+
+								</Formik>
+
+
+
+
 								</div>
 							</div>
 						</div>
@@ -197,9 +192,9 @@ const Editor = ({ groups }) => {
 					</section>
 				</>
 
-				)
-				}
-			</>
+
+
+
 		);
 	}
 
