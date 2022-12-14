@@ -12,6 +12,7 @@ const Addbtn = () => {
 				<Link style={style} to='./about' className='btn btn-primary mx-1 rounded m-1'>درباره برنامه</Link>
 				<Link style={style} to='./list' className='btn btn-primary mx-1 rounded m-1'>لیست</Link>
 				<Link style={style} to='./' className='btn btn-primary mx-1 rounded m-1'>صفحه اصلی</Link>
+				{/* <Link style={style} to='/Capabilities' className='btn btn-warning mx-1 rounded m-1'>قابلیت های برنامه</Link> */}
 			</div>
 		</div>
 	)

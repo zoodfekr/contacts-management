@@ -33,9 +33,6 @@ const Editor = ({ groups }) => {
 
 	}, []);
 
-	const setcontactinfo = (event) => {
-		setcontact({ ...contact, [event.target.name]: event.target.value });
-	}
 
 	const updateform = (value) => {
 		// event.preventDefault();
@@ -43,14 +40,8 @@ const Editor = ({ groups }) => {
 		toast.success("مخاطب ویرایش شد")
 		navigate("/")
 	}
-
 	if (contact) {
-
-
 		console.log("econtact", contact);
-
-
-
 		return (
 
 				<>

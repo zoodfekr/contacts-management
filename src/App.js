@@ -19,9 +19,11 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Appcontext from '../src/context/Appcontext'
-import Accordion from './component/Accordion';
+import Admin from './component/Admin';
 import { DebounceInput } from 'react-debounce-input';
 import { contactSchema } from './validation/validation';
+import Capabilities from './component/Capabilities';
+import { useImmer } from 'use-immer';
 
 
 
@@ -32,31 +34,27 @@ const App = () => {
 	const [getcontacts, setcontacts] = useState([]);
 	const [getGroups, setGroups] = useState([]);
 	let [groupname, setgroupname] = useState({});
-	let [query, setquery] = useState({ text: "" });
+	let [query, setquery] = useImmer({ text: "" });
 	// const [error, seterror] = useState([]);
 	let location = useLocation();
 
-
-
 	const [getFilteredContacts, setFilteredContacts] = useState();
-
-
 	const [contact, setcontact] = useState()
-
 	const tester = getcontacts;
 	const tester2 = "0";
 
 	let timer;
 	const finder = (event) => {
 		clearTimeout(timer);
-		timer = setTimeout(() => { setquery({ ...query, text: event.target.value }) }, 300)
+		timer = setTimeout(() => { setquery(draft => { draft.text = event.target.value }) }, 300);
 	}
+
+	useEffect(() => { setquery(draft => { draft.text = null }) }, [location]);
+
 
 	useEffect(() => {
 		const fetchData = async () => {
-
 			try {
-
 				setpreloader(true);
 				let { data: contactdata } = await getallcontact();
 				let { data: groupsData } = await getallgroup();
@@ -72,15 +70,13 @@ const App = () => {
 	}, []);
 
 
-	const createContactForm = async values => {
-		// event.preventDefault();
-		try {
-			// await contactSchema.validate(contact, { abortEarly: false });
 
+
+	const createContactForm = async values => {
+		try {
 			const { status } = await createContact(values);
 			if (status === 201) {
-				toast.success("مخاطب ساخته شد")
-				// setcontact(null);
+				toast.error("مخاطب ساخته شد")
 				navigate("/");
 			} else {
 				toast.err("مخاطب ساخته نشد")
@@ -100,15 +96,16 @@ const App = () => {
 	return (
 		<>
 
-			<Appcontext.Provider value={{ tester, tester2 }}>
+			<Appcontext.Provider >
 
 
 				<Routes>
 
 					<Route path='/' element={[<Navbar finder={finder} query={query} />]}>
-						<Route path='/acc' element={<Accordion />} />
+						<Route path='/admin' element={<Admin />} />
 						<Route path='/' element={<Contacts getFilteredContacts={getFilteredContacts} query={query} />}></Route>
 						<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
+						<Route path='/Capabilities' element={<Capabilities></Capabilities>}></Route>
 						<Route path='/about' element={<About />}></Route>
 						<Route path='/editor/:cid' element={<Editor loading={preloader} setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>
 						<Route path='/add' element={<Addcontact setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>

@@ -9,21 +9,6 @@ import { contactSchema } from "../validation/validation";
 
 const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactForm }) => {
 
-	// const { error } = React.useContext(Appcontext);
-
-	// const firstinput = useRef();
-
-	// useEffect(() => {
-	// 	const fetchData = () => {
-	// 		firstinput.current.focus();
-	// 		firstinput.current.className = " form-control"
-	// 		console.log(firstinput);
-	// 	};
-	// 	fetchData();
-	// }, []);
-
-
-
 	return (
 		<>
 			{loading ? (<Spiner />) : (
