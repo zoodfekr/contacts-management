@@ -1,7 +1,7 @@
 {
   "contacts": [
     {
-      "fullname": "نیما احمدی858",
+      "fullname": "نیما احمدی858n",
       "photo": "",
       "mobile": "0910000000000",
       "email": "test@gmail.com",
@@ -61,25 +61,16 @@
       "email": "test@gmail.come",
       "job": "راننده",
       "group": "4",
-      "id": 10
-    },
-    {
-      "fullname": "احمد مرادی",
-      "photo": "",
-      "mobile": 910000000,
-      "email": "test@gmail.come",
-      "job": "راننده",
-      "group": "4",
       "id": 11
     },
     {
-      "fullname": "احمد مرادی",
+      "fullname": "تست 80",
       "photo": "",
       "mobile": 910000000,
-      "email": "test@gmail.come",
+      "email": "test@gmail.com",
       "job": "راننده",
       "group": "4",
-      "id": 13
+      "id": 12
     }
   ],
   "groups": [

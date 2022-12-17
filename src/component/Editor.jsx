@@ -37,7 +37,7 @@ const Editor = ({ groups }) => {
 	const updateform = (value) => {
 		// event.preventDefault();
 		putcontact(parseInt(params.cid), value);
-		toast.success("مخاطب ویرایش شد")
+		toast.info("مخاطب ویرایش شد")
 		navigate("/")
 	}
 	if (contact) {

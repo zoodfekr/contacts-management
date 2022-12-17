@@ -76,13 +76,16 @@ const App = () => {
 		try {
 			const { status } = await createContact(values);
 			if (status === 201) {
-				toast.error("مخاطب ساخته شد")
+				toast.success("مخاطب ساخته شد")
 				navigate("/");
 			} else {
-				toast.err("مخاطب ساخته نشد")
+				toast.error("مخاطب ساخته نشد")
 			}
 		} catch (err) {
-			console.log(err.message);
+			console.log("پیام", err.message);
+			if (err.message == "Network Error") {
+				toast.error("قطع ارتباط با سرور")
+			}
 		}
 	}
 
@@ -90,7 +93,6 @@ const App = () => {
 		console.log("داده", values)
 		setcontact(values);
 		createContactForm(values)
-
 	}
 
 	return (

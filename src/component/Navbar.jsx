@@ -14,15 +14,6 @@ function Navbar({ query, finder }) {
 
 	const location = useLocation();
 
-	// const { seterror } = React.useContext(Appcontext);
-
-	// پاک کننده ارورهای yup
-	// useEffect(() => {
-	// 	if (location.pathname != "/list") {
-	// 		seterror([]);
-	// 	}
-	// }, [location]);
-
 	return (
 		<>
 			<nav class="navbar navbar-dark navbar-expand-lg bg-light bg-dark shadow-lg" dir="rtl" >
@@ -40,13 +31,18 @@ function Navbar({ query, finder }) {
 
 			<Addbtn />
 			<Outlet />
-			<ToastContainer position="bottom-center" autoClose={1500}
-				hideProgressBar={false}
-				newestOnTop={false}
+			<ToastContainer
+				position="top-center"
+				autoClose={1500}
+				hideProgressBar
+				newestOnTop
 				closeOnClick
 				rtl={true}
+				pauseOnFocusLoss
+				draggable
 				pauseOnHover
-				theme="colored" />
+				theme="colored"
+			/>
 
 		</>
 
