@@ -84,45 +84,45 @@ const Editor = ({ groups }) => {
 								>
 									<Form className="bg-light p-4" style={{ borderRadius: "25px" }}>
 
-										<div className="mb-2">
+										<div className="mb-4">
 
 											<Field name="fullname" type="text" className='form-control' placeholder="نام و نام خانوادگی" />
-											<ErrorMessage name="fullname" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+											<ErrorMessage name="fullname" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 										</div>
 
-										<div className="mb-2">
+										<div className="mb-4">
 											<Field
 												name="photo"
 												type="text"
 												className="form-control"
 												placeholder="آدرس تصویر"
 											/>
-											<ErrorMessage name="photo" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+											<ErrorMessage name="photo" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 										</div>
 
-										<div className="mb-2">
+										<div className="mb-4">
 											<Field
 												name="mobile"
 												type="number"
 												className="form-control"
 												placeholder="شماره موبایل"
 											/>
-											<ErrorMessage name="mobile" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+											<ErrorMessage name="mobile" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 										</div>
-										<div className="mb-2">
+										<div className="mb-4">
 											<Field
 												type="email"
 												name="email"
 												className="form-control"
 												placeholder="آدرس ایمیل"
 											/>
-											<ErrorMessage name="email" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+											<ErrorMessage name="email" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 										</div>
-										<div className="mb-2">
+										<div className="mb-4">
 
 											<Field
 												type="text"
@@ -130,10 +130,10 @@ const Editor = ({ groups }) => {
 												className="form-control"
 												placeholder="شغل"
 											/>
-											<ErrorMessage name="job" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+											<ErrorMessage name="job" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 										</div>
-										<div className="mb-2">
+										<div className="mb-4">
 											<Field
 												name="group"
 												as="select"
@@ -145,7 +145,7 @@ const Editor = ({ groups }) => {
 												))}
 
 											</Field>
-											<ErrorMessage name="group" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+											<ErrorMessage name="group" render={(msg) => (<div className="text-danger position-absolute">{msg}</div>)} />
 
 										</div>
 

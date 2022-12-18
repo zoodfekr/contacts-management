@@ -17,7 +17,7 @@ function Navbar({ query, finder }) {
 	return (
 		<>
 			<nav class="navbar navbar-dark navbar-expand-lg bg-light bg-dark shadow-lg" dir="rtl" >
-				<div class="container">
+				<div class="container" id="top">
 
 					<Logo />
 
@@ -43,6 +43,13 @@ function Navbar({ query, finder }) {
 				pauseOnHover
 				theme="colored"
 			/>
+
+			<div>
+				<a href="#top" className="fixed-bottom ">
+					<img src={require('../assets/top-bottom.jpg')} alt="" width="80px" style={{ borderRadius: "80px 80px 0 0", overflow: "hidden" }} /><br />
+				</a>
+			</div>
+
 
 		</>
 
