@@ -110,8 +110,9 @@ const Contacts = (props) => {
 
 	return (
 		<div className=" container p-0 d-flex flex-row flex-wrap justify-content-center" dir="rtl" style={{ boxSizing: "border-box" }}>
-			{preloader ? <Spiner /> : (conts)}
-
+			{preloader ? <Spiner /> : null}
+			{/* <Spiner /> */}
+			{conts}
 		</div>
 
 	)

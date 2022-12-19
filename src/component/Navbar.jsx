@@ -33,7 +33,7 @@ function Navbar({ query, finder }) {
 			<Outlet />
 			<ToastContainer
 				position="top-center"
-				autoClose={1500}
+				autoClose={3000}
 				hideProgressBar
 				newestOnTop
 				closeOnClick

@@ -48,7 +48,7 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 									>
 										<Form className="bg-light p-4" style={{ borderRadius: "25px" }}>
 
-											<div className="mb-2">
+											<div className="mb-4">
 
 												<Field name="fullname"
 													type="text"
@@ -57,7 +57,7 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 												/>
 
 												<ErrorMessage name="fullname"
-													render={(msg) => (<div className="text-danger">{msg}</div>)} />
+													render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 											</div>
 
