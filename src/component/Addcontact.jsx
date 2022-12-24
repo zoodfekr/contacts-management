@@ -61,38 +61,38 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 
 											</div>
 
-											<div className="mb-2">
+											<div className="mb-4">
 												<Field
 													name="photo"
 													type="text"
 													className="form-control"
 													placeholder="آدرس تصویر"
 												/>
-												<ErrorMessage name="photo" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+												<ErrorMessage name="photo" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 											</div>
 
-											<div className="mb-2">
+											<div className="mb-4">
 												<Field
 													name="mobile"
 													type="number"
 													className="form-control"
 													placeholder="شماره موبایل"
 												/>
-												<ErrorMessage name="mobile" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+												<ErrorMessage name="mobile" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 											</div>
-											<div className="mb-2">
+											<div className="mb-4">
 												<Field
 													type="email"
 													name="email"
 													className="form-control"
 													placeholder="آدرس ایمیل"
 												/>
-												<ErrorMessage name="email" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+												<ErrorMessage name="email" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 											</div>
-											<div className="mb-2">
+											<div className="mb-4">
 
 												<Field
 													type="text"
@@ -100,10 +100,10 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 													className="form-control"
 													placeholder="شغل"
 												/>
-												<ErrorMessage name="job" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+												<ErrorMessage name="job" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 											</div>
-											<div className="mb-2">
+											<div className="mb-4">
 												<Field
 													name="group"
 													as="select"
@@ -115,28 +115,18 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 													))}
 
 												</Field>
-												<ErrorMessage name="group" render={(msg) => (<div className="text-danger">{msg}</div>)} />
+												<ErrorMessage name="group" render={(msg) => (<small className="text-danger position-absolute">{msg}</small>)} />
 
 											</div>
 
-											<div className="mx-2" className=" d-flex " style={{
-												justifyContent: "space-around"
-											}}>
+											<div className="mx-2 mt-5 d-flex justify-content-around" >
 
-												<input type="submit"
-													className="btn"
+												<input type="submit" className="btn" value="ساخت مخاطب" className="btn btn-primary" />
 
-													value="ساخت مخاطب"
-													className="btn btn-primary"
-												/>
-												<Link to={"/"}
-													className="btn mx-2"
-													className="btn btn-danger"
-												>
-													انصراف
-												</Link>
+												<Link to={"/"} className="btn mx-2" className="btn btn-danger" >انصراف</Link>
 
 											</div>
+
 										</Form>
 
 
