@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.62b0c33f.css",
+    "main.js": "/static/js/main.efd5b4d9.js",
+    "static/media/Spinner.gif": "/static/media/Spinner.5b35cef0ce49e2af8525.gif",
+    "static/media/clist.jpg": "/static/media/clist.c6708b6e22720a6ee81b.jpg",
+    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.422cfe2813b03d900c10.ttf",
+    "static/media/about.png": "/static/media/about.462a1579112662db4a3e.png",
+    "static/media/man-taking-note.png": "/static/media/man-taking-note.578e1679689f39584d15.png",
+    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.aff1938a5c48584fa92b.ttf",
+    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.64d495f582d4a1590a6c.woff2",
+    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.a914b121110f8b6e01c9.woff2",
+    "static/media/top-bottom.jpg": "/static/media/top-bottom.5d2c5f9a18517de4306f.jpg",
+    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.625dca125b58060788da.ttf",
+    "static/media/Vazirmatn-ExtraLight.woff2": "/static/media/Vazirmatn-ExtraLight.901a97d34e331f269815.woff2",
+    "static/media/Vazirmatn-Light.woff2": "/static/media/Vazirmatn-Light.a929468e39d61ead9a4a.woff2",
+    "static/media/Vazirmatn-Medium.woff2": "/static/media/Vazirmatn-Medium.bc7d8f11b2c39fd0a880.woff2",
+    "static/media/Vazirmatn-ExtraBold.woff2": "/static/media/Vazirmatn-ExtraBold.b130af771aa495b1ef8c.woff2",
+    "static/media/Vazirmatn-SemiBold.woff2": "/static/media/Vazirmatn-SemiBold.b1912a963a6414094c08.woff2",
+    "static/media/Vazirmatn-Bold.woff2": "/static/media/Vazirmatn-Bold.0d6a47ce8c185a9436b2.woff2",
+    "static/media/Vazirmatn-Thin.woff2": "/static/media/Vazirmatn-Thin.7128634a83fa3eece1bf.woff2",
+    "static/media/Vazirmatn-Regular.woff2": "/static/media/Vazirmatn-Regular.58c84f666915410c0ba8.woff2",
+    "static/media/Vazirmatn-Black.woff2": "/static/media/Vazirmatn-Black.aa14df29ec50d5e9c2c9.woff2",
+    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.47074dec01b64a5db2c4.woff2",
+    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.ea8535110e0c42fd0046.ttf",
+    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.2ec4574b00d1d21ed0a3.woff2",
+    "index.html": "/index.html",
+    "main.62b0c33f.css.map": "/static/css/main.62b0c33f.css.map",
+    "main.efd5b4d9.js.map": "/static/js/main.efd5b4d9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.62b0c33f.css",
+    "static/js/main.efd5b4d9.js"
+  ]
+}
