@@ -51,7 +51,6 @@ const App = () => {
 
 	useEffect(() => { setquery(draft => { draft.text = null }) }, [location]);
 
-
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
