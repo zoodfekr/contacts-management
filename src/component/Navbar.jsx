@@ -8,6 +8,7 @@ import { Location } from "react-router-dom";
 import Contacts from "./contacts";
 import React, { useEffect } from "react";
 import Appcontext from "../context/Appcontext";
+import colorfull from "./HOC/Hoc";
 
 
 function Navbar({ query, finder }) {
@@ -15,8 +16,8 @@ function Navbar({ query, finder }) {
 	const location = useLocation();
 
 	return (
-		<>
-			<nav class="navbar navbar-dark navbar-expand-lg bg-light bg-dark shadow-lg" dir="rtl" >
+		<div >
+			<nav class="navbar navbar-dark navbar-expand-lg   shadow-lg" dir="rtl" >
 				<div class="container" id="top">
 
 					<Logo />
@@ -27,13 +28,14 @@ function Navbar({ query, finder }) {
 
 			</nav >
 
+	
 
 
 			<Addbtn />
 			<Outlet />
 			<ToastContainer
 				position="top-center"
-				autoClose={3000}
+				autoClose={1500}
 				hideProgressBar
 				newestOnTop
 				closeOnClick
@@ -51,11 +53,11 @@ function Navbar({ query, finder }) {
 			</div>
 
 
-		</>
+		</div>
 
 
 
 	);
 }
 
-export default Navbar;
+export default colorfull(Navbar);
