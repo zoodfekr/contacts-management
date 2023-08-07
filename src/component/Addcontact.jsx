@@ -51,6 +51,8 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 											<div className="mb-4">
 
 												<Field name="fullname"
+													autocomplete="off"
+
 													type="text"
 													className='form-control'
 													placeholder="نام و نام خانوادگی"
@@ -74,6 +76,7 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 
 											<div className="mb-4">
 												<Field
+													autocomplete="off"
 													name="mobile"
 													type="number"
 													className="form-control"
@@ -84,8 +87,9 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 											</div>
 											<div className="mb-4">
 												<Field
+													autocomplete="off"
 													type="email"
-													name="email"
+													name="email" inputa
 													className="form-control"
 													placeholder="آدرس ایمیل"
 												/>
@@ -95,6 +99,8 @@ const Addcontact = ({ loading, contact, groups, setcontactinfo, createContactFor
 											<div className="mb-4">
 
 												<Field
+													autocomplete="off"
+
 													type="text"
 													name="job"
 													className="form-control"

@@ -108,7 +108,7 @@ const Contacts = (props) => {
 	const showcontact = (c) => <Contact key={c.id} contacts={c} clear={clear} />;
 
 
-	const show = contacts.length > 0 ? contacts.filter(input).map(showcontact) : null;
+	const show = contacts.length > 0 ? contacts.filter(input).map(showcontact).reverse() : null;
 
 
 	return (
