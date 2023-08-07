@@ -19,10 +19,10 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Appcontext from '../src/context/Appcontext'
-import Admin from './component/Admin';
+
 import { DebounceInput } from 'react-debounce-input';
 import { contactSchema } from './validation/validation';
-import Capabilities from './component/Capabilities';
+
 import { useImmer } from 'use-immer';
 
 
@@ -81,7 +81,6 @@ const App = () => {
 				toast.error("مخاطب ساخته نشد")
 			}
 		} catch (err) {
-			console.log("پیام", err.message);
 			if (err.message == "Network Error") {
 				toast.error("قطع ارتباط با سرور")
 			}
@@ -103,10 +102,9 @@ const App = () => {
 				<Routes>
 
 					<Route path='/' element={[<Navbar finder={finder} query={query} />]}>
-						<Route path='/admin' element={<Admin />} />
+			
 						<Route path='/' element={<Contacts getFilteredContacts={getFilteredContacts} query={query} />}></Route>
 						<Route path='/:cid' element={<Clist groupsData={getGroups} />} />
-						<Route path='/Capabilities' element={<Capabilities></Capabilities>}></Route>
 						<Route path='/about' element={<About />}></Route>
 						<Route path='/editor/:cid' element={<Editor loading={preloader} setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>
 						<Route path='/add' element={<Addcontact setcontactinfo={setcontactinfo} contact={getcontact} groups={getGroups} createContactForm={createContactForm} />}></Route>

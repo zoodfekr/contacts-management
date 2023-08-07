@@ -41,7 +41,6 @@ const Editor = ({ groups }) => {
 		navigate("/")
 	}
 	if (contact) {
-		console.log("econtact", contact);
 		return (
 
 				<>

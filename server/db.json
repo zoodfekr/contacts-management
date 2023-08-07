@@ -1,24 +1,6 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "fullname": "Amalia",
-      "mobile": "6047647997",
-      "email": "anapoleon0@ehow.com",
-      "job": "Web Developer III",
-      "group": 1,
-      "image": ""
-    },
-    {
-      "id": 2,
-      "fullname": "Kellen",
-      "mobile": "5099852996",
-      "email": "khartness1@microsoft.com",
-      "job": "Structural Engineer",
-      "group": 1,
-      "image": ""
-    },
-    {
       "id": 3,
       "fullname": "Christabella",
       "mobile": "4416365407",

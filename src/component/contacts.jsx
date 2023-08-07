@@ -86,12 +86,12 @@ const Contacts = (props) => {
 	}
 
 
-	// const notfound = <div className=' text-center py-2  rounded'>
-	// 	<img src={require('../assets/no-found.gif')} alt="notfound" className='w-50' />
-	// 	<p className='' style={{ fontSize: '25px' }}>مخاطب یافت نشد...</p>
-	// </div>;
+	const notfound = <div className=' text-center py-2  rounded'>
+		<img src={require('../assets/no-found.gif')} alt="notfound" className='w-50' />
+		<p className='' style={{ fontSize: '25px' }}>مخاطب یافت نشد...</p>
+	</div>;
 
-	const notfound = <Preloader></Preloader>
+	// const notfound = <Preloader></Preloader>
 
 
 
@@ -108,7 +108,7 @@ const Contacts = (props) => {
 	const showcontact = (c) => <Contact key={c.id} contacts={c} clear={clear} />;
 
 
-	const show = contacts.length > 0 ? contacts.filter(input).map(showcontact) : notfound;
+	const show = contacts.length > 0 ? contacts.filter(input).map(showcontact) : null;
 
 
 	return (
